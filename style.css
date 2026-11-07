@@ -1291,3 +1291,133 @@ footer {
   padding-top: 80px !important;
   padding-bottom: 80px !important;
 }
+
+/* ==========================================================
+   SISTEMA RESPONSIVO TOTAL (PC, TABLET Y CELULAR)
+   ================================================---------- */
+
+/* 1. Contenedores generales para pantallas grandes y medianas */
+.hero-container,
+.nosotros-container,
+.container-espacios-layout,
+.container-galeria,
+.container-contacto {
+  max-width: 1400px;
+  width: 92%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  box-sizing: border-box;
+}
+
+.navbar {
+  max-width: 1450px;
+  width: 95%;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+}
+
+
+/* 2. ADAPTACIÓN PARA TABLETS (Pantallas menores a 1024px) */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 1rem 1.5rem;
+  }
+  
+  .navbar ul {
+    gap: 1rem;
+  }
+  
+  .navbar a {
+    font-size: 0.85rem;
+  }
+
+  .espacios-grid-2col,
+  .contacto-grid,
+  .hero-container,
+  .nosotros-layout {
+    gap: 2rem;
+  }
+}
+
+
+/* 3. ADAPTACIÓN PARA CELULARES Y MÓVILES (Pantallas menores a 768px) */
+@media (max-width: 768px) {
+  /* Forzar que todos los contenedores dejen un margen lateral limpio de 4% */
+  .hero-container,
+  .nosotros-container,
+  .container-espacios-layout,
+  .container-galeria,
+  .container-contacto {
+    width: 92% !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+
+  /* Barra de navegación adaptable para celular */
+  .navbar {
+    flex-direction: column !important;
+    gap: 15px !important;
+    padding: 1rem !important;
+    text-align: center;
+  }
+
+  .navbar nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem !important;
+    padding: 0;
+  }
+
+  .nav-right {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+  }
+  
+  .location-text {
+    font-size: 0.8rem;
+  }
+
+  /* Apilar todas las columnas dobles en una sola columna vertical */
+  .hero-container,
+  .nosotros-layout,
+  .espacios-grid-2col,
+  .contacto-grid,
+  .espacios-top-row {
+    flex-direction: column !important;
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    align-items: stretch !important;
+  }
+
+  /* Asegurar que las imágenes y cajas ocupen todo el ancho disponible */
+  .hero-image-col,
+  .hero-content-col,
+  .nosotros-image-col,
+  .nosotros-content-col,
+  .espacios-col-left,
+  .espacios-col-right {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Reducir ligeramente los títulos muy grandes para que no se corten en celulares */
+  .hero-title,
+  .espacios-main-title,
+  .espacios-subtitle-hero,
+  .nosotros-header h1 {
+    font-size: 2.2rem !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Ajustar cuadrículas internas de tarjetas */
+  .cards-nosotros-grid,
+  .filosofia-pilares-grid,
+  .hero-features-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
