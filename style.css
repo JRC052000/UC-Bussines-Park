@@ -42,7 +42,7 @@ body {
     background-color: rgba(31, 5, 10, 0.95);
     backdrop-filter: blur(10px);
     color: #fff;
-    padding: 1rem 4rem;
+    padding: 0.4rem 2rem;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -59,7 +59,7 @@ body {
 
 /* Logo Oficial: Vuelve todo blanco y quita el fondo */
 .logo-official-img {
-    height: 100px;               /* Altura ideal para que resalte el monograma y texto */
+    height: 60px;               /* Altura ideal para que resalte el monograma y texto */
     width: auto;
     object-fit: contain;
     
@@ -433,9 +433,10 @@ body {
 }
 
 .cards-nosotros-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+  gap: 16px !important;
+  margin-top: 20px !important;
 }
 
 .card-nosotros-item {
@@ -553,12 +554,11 @@ body {
     margin-top: 1.5rem;
 }
 
-.filosofia-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 1.2rem;
-    transition: border-color 0.3s, transform 0.3s;
+.filosofia-pilares-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important; /* 3 columnas en pantallas grandes */
+  gap: 16px !important;
+  margin-top: 24px !important;
 }
 
 .filosofia-card:hover {
@@ -712,7 +712,7 @@ body {
 }
 
 /* ==========================================================================
-   Galería de Instalaciones
+   Galería de Instalaciones (Carrusel con Desplazamiento Horizontal)
    ========================================================================== */
 .container-galeria {
     max-width: 1450px;
@@ -721,6 +721,46 @@ body {
     scroll-margin-top: 90px;
 }
 
+/* --- Encabezado Superior (Título principal y Descripción) --- */
+.galeria-header-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2.5rem;
+    gap: 2.5rem;
+}
+
+.galeria-header-left {
+    flex: 1 1 60%;
+}
+
+.galeria-header-right {
+    flex: 1 1 35%;
+    max-width: 420px;
+}
+
+.galeria-main-title {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 2.8rem;
+    line-height: 1.2;
+    color: var(--text-white);
+    font-weight: 400;
+    margin: 0;
+}
+
+.galeria-main-title em {
+    font-style: italic;
+    color: var(--accent-gold, #eab308); /* Si usas dorado o guinda claro */
+}
+
+.galeria-desc-text {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* --- Barra de Subtítulo y Controles (Lo que ya tenías) --- */
 .galeria-header {
     display: flex;
     justify-content: space-between;
@@ -773,6 +813,7 @@ body {
     border-color: var(--accent-guinda);
 }
 
+/* --- Carrusel y Tarjetas --- */
 .galeria-track {
     display: flex;
     gap: 1.5rem;
@@ -887,6 +928,37 @@ body {
     width: 24px;
     background-color: var(--accent-guinda);
     border-radius: 4px;
+}
+
+/* --- Adaptación Responsiva para Celulares --- */
+@media (max-width: 768px) {
+    .container-galeria {
+        padding: 0 1rem;
+        margin: 3rem auto;
+    }
+
+    .galeria-header-grid {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .galeria-header-left,
+    .galeria-header-right {
+        flex: none;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .galeria-main-title {
+        font-size: 2rem;
+    }
+
+    .galeria-card {
+        min-width: 280px;
+        height: 420px;
+    }
 }
 
 /* ==========================================================================
@@ -1260,164 +1332,210 @@ footer {
   }
 }
 
-/* 1. Margen y espacio lateral general para todas las secciones */
+/* 1. Ancho principal idéntico al de referencia para que ocupe bien el espacio sin desbordarse */
 .hero-container,
 .nosotros-container,
 .container-espacios-layout,
 .container-galeria,
 .container-contacto {
-  max-width: 1200px !important; /* Limita el ancho del contenido para dejar aire a los lados */
-  width: 90% !important;        /* Ocupa el 90% de la pantalla para garantizar márgenes laterales */
-  margin-left: auto !important; /* Centra el contenido horizontalmente */
+  max-width: 1450px !important; /* Amplía el límite para que luzca espacioso como la azul */
+  width: 95% !important;        /* Reduce los márgenes laterales vacíos a los lados */
+  margin-left: auto !important;
   margin-right: auto !important;
-  padding-left: 2rem !important;  /* Espacio extra de seguridad interno */
-  padding-right: 2rem !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  box-sizing: border-box !important;
 }
 
-/* 2. Ajuste del margen lateral para el menú superior (Navbar) */
+/* 2. Barra de navegación alineada al mismo ancho */
 .navbar {
-  max-width: 1200px !important;
-  width: 90% !important;
+  max-width: 1480px !important;
+  width: 97% !important;
   margin: 0 auto !important;
-  padding: 1.2rem 2rem !important;
+  padding: 1rem 2rem !important;
+  box-sizing: border-box !important;
 }
 
-/* 3. Espaciado vertical entre secciones para darle respiro al diseño */
-.nosotros-section,
-.hero-section,
-.container-espacios-layout,
-.container-galeria,
-.container-contacto {
-  padding-top: 80px !important;
-  padding-bottom: 80px !important;
+/* 3. Proporción simétrica del 50% para las dos columnas principales (Texto e Imagen) */
+.hero-container {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 3rem !important;
+}
+
+.hero-content-col {
+  flex: 1 1 52% !important;
+  max-width: 52% !important;
+}
+
+.hero-image-col {
+  flex: 1 1 48% !important;
+  max-width: 48% !important;
+}
+
+/* Asegurar que la tarjeta de imagen llene su espacio de forma limpia */
+.hero-image-card {
+  width: 100% !important;
+  height: 460px !important; /* Altura controlada y elegante */
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+.hero-image-card img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
 }
 
 /* ==========================================================
-   SISTEMA RESPONSIVO TOTAL (PC, TABLET Y CELULAR)
+   ADAPTACIÓN MÓVIL EXACTA AL DISEÑO DE REFERENCIA
    ================================================---------- */
-
-/* 1. Contenedores generales para pantallas grandes y medianas */
-.hero-container,
-.nosotros-container,
-.container-espacios-layout,
-.container-galeria,
-.container-contacto {
-  max-width: 1400px;
-  width: 92%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  box-sizing: border-box;
-}
-
-.navbar {
-  max-width: 1450px;
-  width: 95%;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-  box-sizing: border-box;
-}
-
-
-/* 2. ADAPTACIÓN PARA TABLETS (Pantallas menores a 1024px) */
-@media (max-width: 1024px) {
-  .navbar {
-    padding: 1rem 1.5rem;
-  }
-  
-  .navbar ul {
-    gap: 1rem;
-  }
-  
-  .navbar a {
-    font-size: 0.85rem;
-  }
-
-  .espacios-grid-2col,
-  .contacto-grid,
-  .hero-container,
-  .nosotros-layout {
-    gap: 2rem;
-  }
-}
-
-
-/* 3. ADAPTACIÓN PARA CELULARES Y MÓVILES (Pantallas menores a 768px) */
 @media (max-width: 768px) {
-  /* Forzar que todos los contenedores dejen un margen lateral limpio de 4% */
-  .hero-container,
-  .nosotros-container,
+  
+  /* 1. Eliminar contenedores encajonados y aprovechar el 100% del ancho */
+  .hero-section,
+  .nosotros-section,
   .container-espacios-layout,
   .container-galeria,
   .container-contacto {
-    width: 92% !important;
-    padding-left: 0.5rem !important;
-    padding-right: 0.5rem !important;
+    padding: 30px 16px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 
-  /* Barra de navegación adaptable para celular */
-  .navbar {
+  .hero-container,
+  .nosotros-container,
+  .espacios-grid-2col,
+  .contacto-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
     flex-direction: column !important;
-    gap: 15px !important;
-    padding: 1rem !important;
-    text-align: center;
+    gap: 24px !important;
+  }
+
+  /* 2. Encabezado (Navbar) compacto para móvil */
+  .navbar {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 12px 16px !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    background-color: rgba(31, 5, 10, 0.98) !important;
+  }
+
+  .logo-official-img {
+    height: 38px !important; /* Tamaño de logo proporcionado */
+  }
+
+  .navbar nav {
+    width: 100%;
+    margin-top: 8px;
   }
 
   .navbar nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.8rem !important;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px !important;
     padding: 0;
   }
 
+  .navbar a {
+    font-size: 0.78rem !important;
+  }
+
   .nav-right {
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    align-items: center;
-  }
-  
-  .location-text {
-    font-size: 0.8rem;
+    display: none !important; /* Oculta la ubicación y botón redundant para ahorrar espacio arriba */
   }
 
-  /* Apilar todas las columnas dobles en una sola columna vertical */
-  .hero-container,
-  .nosotros-layout,
-  .espacios-grid-2col,
-  .contacto-grid,
-  .espacios-top-row {
-    flex-direction: column !important;
-    grid-template-columns: 1fr !important;
-    gap: 2rem !important;
-    align-items: stretch !important;
-  }
-
-  /* Asegurar que las imágenes y cajas ocupen todo el ancho disponible */
+  /* 3. Columna del Hero / Inicio limpia y fluida */
   .hero-image-col,
-  .hero-content-col,
-  .nosotros-image-col,
-  .nosotros-content-col,
-  .espacios-col-left,
-  .espacios-col-right {
-    max-width: 100% !important;
+  .hero-content-col {
     width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
   }
 
-  /* Reducir ligeramente los títulos muy grandes para que no se corten en celulares */
-  .hero-title,
-  .espacios-main-title,
-  .espacios-subtitle-hero,
-  .nosotros-header h1 {
-    font-size: 2.2rem !important;
+  /* Imagen ocupando el ancho completo disponible */
+  .hero-image-card {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 16px !important;
+  }
+
+  .hero-image-card img {
+    width: 100% !important;
+    max-height: 280px !important;
+    object-fit: cover !important;
+    border-radius: 16px !important;
+  }
+
+  /* Textos bien proporcionados como en la imagen de referencia */
+  .hero-subtitle {
+    font-size: 0.75rem !important;
+    letter-spacing: 1px !important;
+  }
+
+  .hero-title {
+    font-size: 2.6rem !important; /* Ajusta dinámicamente el título en pantallas intermedias */
     line-height: 1.2 !important;
   }
 
-  /* Ajustar cuadrículas internas de tarjetas */
-  .cards-nosotros-grid,
-  .filosofia-pilares-grid,
+  .hero-description {
+    font-size: 0.98rem !important;
+    line-height: 1.55 !important;
+    margin-top: 8px !important;
+  }
+
+  /* Botones a ancho completo estilo móvil */
+  .hero-buttons {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  .btn-hero-primary,
+  .btn-hero-secondary {
+    width: 100% !important;
+    text-align: center !important;
+    padding: 14px 20px !important;
+    font-size: 0.95rem !important;
+    display: block !important;
+  }
+
+  /* Métricas inferiores alineadas */
   .hero-features-grid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
+    gap: 8px !important;
+    text-align: center !important;
+  }
+
+  .hero-feature-item h4 {
+    font-size: 0.85rem !important;
+  }
+  
+  .hero-feature-item p {
+    font-size: 0.7rem !important;
+  }
+}
+
+/* ==========================================================
+   TRANSICIÓN SUAVE PARA LAPTOPS Y TABLETS MEDIANAS
+   ================================================---------- */
+@media (max-width: 1200px) and (min-width: 769px) {
+  .hero-title {
+    font-size: 2.6rem !important; /* Ajusta dinámicamente el título en pantallas intermedias */
+    line-height: 1.2 !important;
+  }
+  
+  .hero-container {
+    gap: 2rem !important;
   }
 }
